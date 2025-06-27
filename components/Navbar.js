@@ -80,7 +80,7 @@ const Navbar = () => {
             </SheetTrigger>
             <SheetContent>
               <SheetHeader>
-                <SheetTitle className="font-bold my-4">HarryBlog</SheetTitle>
+                <SheetTitle className="font-bold my-4">Siam Mehraf</SheetTitle>
                 <SheetDescription>
                   <div className="flex flex-col gap-6">
                     <Link href="/"> Home</Link>
