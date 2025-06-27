@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const HeroSection = () => {
   return (
@@ -9,9 +10,16 @@ const HeroSection = () => {
         <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center">
           {/* Image Col - Move to top on mobile */}
           <div className="order-1 md:order-2 relative ms-0 md:ms-4">
-            <img className="w-full rounded-md" src="/hero-img.jpg" alt="Hero Image" />
-            <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-gray-200 via-white/0 to-white/0 w-full h-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0"></div>
+            <Image
+              className="w-full rounded-md"
+              src="/hero-img.jpg"
+              alt="Hero Image"
+              width={1200} // Replace with your actual image width
+              height={800} // Replace with your actual image height
+              layout="responsive"
+            />
 
+            <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-gray-200 via-white/0 to-white/0 w-full h-full rounded-md mt-4 -mb-4 me-4 -ms-4 lg:mt-6 lg:-mb-6 lg:me-6 lg:-ms-6 dark:from-neutral-800 dark:via-neutral-900/0 dark:to-neutral-900/0"></div>
             {/* SVG*/}
             <div className="absolute bottom-0 start-0">
               {/* ... SVG ... */}
