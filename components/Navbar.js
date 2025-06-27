@@ -33,7 +33,7 @@ const Navbar = () => {
 
   return (
     <nav className="p-4 bg-background/50 sticky top-0 backdrop-blur border-b z-10">
-      <LoadingBar color="#933ce6" progress={progress} onLoaderFinished={() => setProgress(0)} />
+      <LoadingBar color="#950606" progress={progress} onLoaderFinished={() => setProgress(0)} />
       <div className="container mx-auto flex justify-between items-center">
         <Link href={'/'}>
           <div className="text-lg font-bold">Siam Mehraf</div>

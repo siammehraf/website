@@ -49,6 +49,11 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-poppins), sans-serif;
+  }
+
+  :lang(bn) {
+    font-family: var(--font-noto-bengali), serif;
   }
 }
 
