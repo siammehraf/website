@@ -43,7 +43,7 @@ const HeroSection = () => {
             {/* Buttons */}
             <div className="mt-7 grid gap-3 w-full sm:inline-flex mb-4">
               <Link
-                href="/about-me"
+                href="/about"
                 className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                 Know About Me!
                 <svg

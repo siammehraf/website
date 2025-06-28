@@ -27,7 +27,7 @@ const AboutPage = () => {
                 <div className="flex-col justify-start lg:items-start items-center gap-4 flex">
                   <h6 className="text-[#1E2939] dark:text-[#F3F4F6] text-base font-normal leading-relaxed">About Me</h6>
                   <div className="w-full flex-col justify-start lg:items-start items-center gap-3 flex">
-                    <h2 className="text-4xl font-bold font-manrope leading-normal lg:text-start text-center text-blue-700 dark:text-blue-400 transition-colors duration-700">
+                    <h2 className="text-4xl font-bold font-manrope leading-normal lg:text-start text-center text-blue-700 dark:text-[#155DFC] transition-colors duration-700">
                       The Tale of My Achievement Story
                     </h2>
                     <p className="text-base font-normal leading-relaxed lg:text-start text-center text-gray-900 dark:text-gray-100 transition-colors duration-700">
@@ -88,8 +88,8 @@ const AboutPage = () => {
                   </div>
                 </div>
               </div>
-              <button className="sm:w-fit w-full group px-3.5 py-2 rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] transition-all duration-700 ease-in-out justify-center items-center flex bg-blue-700 dark:bg-blue-400 text-white dark:text-gray-900">
-                <span className="px-1.5 text-sm font-medium leading-6 group-hover:-translate-x-0.5 transition-all duration-700 ease-in-out text-white dark:text-gray-900">
+              <button className="sm:w-fit w-full group px-3.5 py-2 rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] transition-all duration-700 ease-in-out justify-center items-center flex bg-blue-700 dark:bg--[#155DFC] text-white dark:text-white-900">
+                <span className="px-1.5 text-sm font-medium leading-6 group-hover:-translate-x-0.5 transition-all duration-700 ease-in-out text-white dark:text-white-900">
                   Read More
                 </span>
                 <svg

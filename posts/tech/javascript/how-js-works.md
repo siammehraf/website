@@ -4,6 +4,7 @@ date: 2025-06-28
 author: Siam Mehraf
 image: '/hero-img.jpg'
 lang: 'bn'
+
 description: জাভাস্ক্রিপ্টে `var`, `let`, এবং `const` কীভাবে কাজ করে — সহজভাবে বাংলায় বোঝানো হলো।
 ---
 
