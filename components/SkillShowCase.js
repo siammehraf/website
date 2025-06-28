@@ -11,17 +11,17 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 const books = [
   {
     title: 'Nefartiti',
-    imageUrl: '/books/nefartiti.jpg',
+    imageUrl: '/images/books/nefartiti.jpg',
     link: '#',
   },
   {
     title: 'Onno Boshonter Shopno',
-    imageUrl: '/books/onno-boshonter-shopno.jpg',
+    imageUrl: '/images/books/onno-boshonter-shopno.jpg',
     link: '#',
   },
   {
     title: 'Chotushkon',
-    imageUrl: '/books/chotushkon.jpg',
+    imageUrl: '/images/books/chotushkon.jpg',
     link: '#',
   },
 ];
