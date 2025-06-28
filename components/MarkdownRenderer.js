@@ -22,11 +22,18 @@ export default function MarkdownRenderer({ content, lang }) {
   }, [content]);
 
   const components = {
+    // Fix to avoid <pre> inside <p> error:
+    p({ node, children }) {
+      if (node.children.length === 1 && node.children[0].type === 'code') {
+        return children;
+      }
+      return <p>{children}</p>;
+    },
+
     code({ node, inline, className, children, ...props }) {
       const codeText = String(children).replace(/\n$/, '');
 
       if (!inline) {
-        // stable id: try line number, else increment counter
         const id =
           node.position?.start.line ??
           (() => {
@@ -41,7 +48,6 @@ export default function MarkdownRenderer({ content, lang }) {
               setTimeout(() => setCopiedId(null), 2500);
             });
           } else {
-            // fallback for insecure context or older browsers
             const textArea = document.createElement('textarea');
             textArea.value = codeText;
             textArea.style.position = 'fixed';
@@ -52,9 +58,7 @@ export default function MarkdownRenderer({ content, lang }) {
               document.execCommand('copy');
               setCopiedId(id);
               setTimeout(() => setCopiedId(null), 1500);
-            } catch {
-              // fail silently
-            }
+            } catch {}
             document.body.removeChild(textArea);
           }
         };
