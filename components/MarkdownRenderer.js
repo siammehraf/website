@@ -38,7 +38,7 @@ export default function MarkdownRenderer({ content, lang }) {
           if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard.writeText(codeText).then(() => {
               setCopiedId(id);
-              setTimeout(() => setCopiedId(null), 1500);
+              setTimeout(() => setCopiedId(null), 2500);
             });
           } else {
             // fallback for insecure context or older browsers
@@ -60,7 +60,7 @@ export default function MarkdownRenderer({ content, lang }) {
         };
 
         return (
-          <div className="relative mb-6 rounded-xl bg-gray-100 dark:bg-[#155DFC] p-4 overflow-auto">
+          <div className="relative my-6 rounded-xl bg-gray-100 dark:bg-[#155DFC] p-4 overflow-auto">
             <pre className="bg-transparent p-0 m-0 overflow-x-auto">
               <code
                 className={`${spaceMono.className} ${className} whitespace-pre`}
