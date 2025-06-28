@@ -15,7 +15,7 @@ export default function CategoryPage({ params }) {
     return (
       <main className="max-w-4xl mx-auto px-4 py-10">
         <h1 className="text-4xl font-bold text-center mb-10">
-          No posts found in category "{capitalizeFirstLetter(category)}"
+          <p>{`No posts found in category "${capitalizeFirstLetter(category)}"`}</p>
         </h1>
       </main>
     );
