@@ -72,9 +72,8 @@ export default function Navbar() {
 
   return (
     // Nav Loader
-    // <nav className="sticky top-0 z-50 bg-background/50 backdrop-blur border-b border-gray-200 dark:border-gray-700 transition-colors duration-500">
-    //   <LoadingBar color="#950606" progress={progress} onLoaderFinished={() => setProgress(0)} />
-    <nav>
+    <nav className="sticky top-0 z-50 bg-background/50 backdrop-blur border-b border-gray-200 dark:border-gray-700 transition-colors duration-500">
+      {/* <LoadingBar color="#950606" progress={progress} onLoaderFinished={() => setProgress(0)} /> */}
       <div className="container mx-auto flex justify-between items-center px-4 py-3 md:py-4">
         {/* Logo / Brand */}
         <Link href="/">
