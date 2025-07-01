@@ -1,6 +1,7 @@
 import { getAllPosts } from '@/lib/posts';
 import Link from 'next/link';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 function capitalizeFirstLetter(str) {
   if (!str) return '';
@@ -11,14 +12,18 @@ export default function SubcategoryPage({ params }) {
   const { category, subcategory } = params;
   const posts = getAllPosts().filter((post) => post.category === category && post.subcategory === subcategory);
 
+  // if (posts.length === 0) {
+  //   return (
+  //     <main className="max-w-4xl mx-auto px-4 py-10">
+  //       <h1 className="text-4xl font-bold text-center mb-10">
+  //         No posts found in {capitalizeFirstLetter(category)} / {capitalizeFirstLetter(subcategory)}
+  //       </h1>
+  //     </main>
+  //   );
+  // }
+
   if (posts.length === 0) {
-    return (
-      <main className="max-w-4xl mx-auto px-4 py-10">
-        <h1 className="text-4xl font-bold text-center mb-10">
-          No posts found in {capitalizeFirstLetter(category)} / {capitalizeFirstLetter(subcategory)}
-        </h1>
-      </main>
-    );
+    return notFound(); // ✅ Trigger universal 404
   }
 
   return (
