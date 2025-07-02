@@ -7,7 +7,7 @@ import NewsletterSignup from '@/components/NewsletterSignup';
 import SkillsChart from '@/components/SkillsChart';
 import SkillsSection from '@/components/SkillsSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
-import WorkShowCase from '@/components/WorkShowCase';
+import WorkShowcase from '@/components/WorkShowcase';
 import React from 'react';
 
 const HomePage = () => {
@@ -16,7 +16,7 @@ const HomePage = () => {
       <HeroSection />
       <BooksShowcase />
       <AboutSection />
-      <WorkShowCase />
+      <WorkShowcase />
       <SkillsSection />
       <TestimonialsSection />
       <ContactSection />

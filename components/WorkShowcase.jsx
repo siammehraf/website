@@ -73,7 +73,7 @@ function ShowcaseGrid({ data }) {
   );
 }
 
-export default function WorkShowCase() {
+export default function WorkShowcase() {
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
       <h2 className="text-3xl font-bold mb-8 text-center">My Work</h2>
