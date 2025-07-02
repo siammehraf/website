@@ -3,6 +3,8 @@ import { Noto_Serif_Bengali } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import BackToTopButton from '@/components/ui/BackToTopButton';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -32,6 +34,8 @@ export default function RootLayout({ children }) {
           <Navbar />
           {children}
         </ThemeProvider>
+        <Footer />
+        <BackToTopButton />
       </body>
     </html>
   );

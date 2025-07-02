@@ -8,7 +8,7 @@ export default async function BlogPostPage({ params }) {
 
   let post;
   try {
-    post = getPost(category, subcategory, slug);
+    post = await getPost(category, subcategory, slug);
   } catch {
     return notFound();
   }
@@ -35,7 +35,7 @@ export default async function BlogPostPage({ params }) {
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
 
   return posts.map((post) => ({
     category: post.category,

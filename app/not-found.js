@@ -22,7 +22,7 @@ export default function NotFound() {
         <p className="text-sm text-muted-foreground">Sorry, we couldn’t find the page you’re looking for.</p>
 
         <Button asChild>
-          <Link href="/" className="inline-flex items-center gap-2">
+          <Link href="/" className="inline-flex items-center gap-2 text-[#155DFC]">
             <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 12h18m-9-9l9 9-9 9" />
             </svg>

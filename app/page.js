@@ -1,12 +1,28 @@
+import AboutSection from '@/components/AboutSection';
+import BooksShowcase from '@/components/BooksShowcase';
+import ContactSection from '@/components/ContactSection';
 import HeroSection from '@/components/HeroSection';
-import { SkillShowCase } from '@/components/SkillShowCase';
+import LatestBlogSection from '@/components/latestblogsection';
+import NewsletterSignup from '@/components/NewsletterSignup';
+import SkillsChart from '@/components/SkillsChart';
+import SkillsSection from '@/components/SkillsSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import WorkShowcase from '@/components/WorkShowCase';
 import React from 'react';
 
 const HomePage = () => {
   return (
     <div>
       <HeroSection />
-      <SkillShowCase />;
+      <BooksShowcase />
+      <AboutSection />
+      <WorkShowcase />
+      <SkillsSection />
+      <TestimonialsSection />
+      <ContactSection />
+      <NewsletterSignup />
+      <SkillsChart />
+      <LatestBlogSection />
     </div>
   );
 };
