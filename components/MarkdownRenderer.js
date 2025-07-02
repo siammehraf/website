@@ -22,13 +22,18 @@ export default function MarkdownRenderer({ content, lang }) {
   }, [content]);
 
   const components = {
-    // Fix to avoid <pre> inside <p> error:
+    // Remove p override, or try this version if you want to keep it:
+    /*
     p({ node, children }) {
-      if (node.children.length === 1 && node.children[0].type === 'code') {
-        return children;
+      const hasBlockChild = node.children.some(
+        (child) => child.type === 'element' && ['pre', 'div', 'table'].includes(child.tagName)
+      );
+      if (hasBlockChild) {
+        return <>{children}</>;
       }
       return <p>{children}</p>;
     },
+    */
 
     code({ node, inline, className, children, ...props }) {
       const codeText = String(children).replace(/\n$/, '');
@@ -42,23 +47,50 @@ export default function MarkdownRenderer({ content, lang }) {
           })();
 
         const handleCopy = () => {
+          const textToCopy = codeText;
+
           if (navigator.clipboard && window.isSecureContext) {
-            navigator.clipboard.writeText(codeText).then(() => {
-              setCopiedId(id);
-              setTimeout(() => setCopiedId(null), 2500);
-            });
+            navigator.clipboard
+              .writeText(textToCopy)
+              .then(() => {
+                setCopiedId(id);
+                setTimeout(() => setCopiedId(null), 2500);
+              })
+              .catch(() => fallbackCopy());
           } else {
+            fallbackCopy();
+          }
+
+          function fallbackCopy() {
             const textArea = document.createElement('textarea');
-            textArea.value = codeText;
+            textArea.value = textToCopy;
+
             textArea.style.position = 'fixed';
+            textArea.style.top = '0';
+            textArea.style.left = '0';
+            textArea.style.width = '2em';
+            textArea.style.height = '2em';
+            textArea.style.padding = '0';
+            textArea.style.border = 'none';
+            textArea.style.outline = 'none';
+            textArea.style.boxShadow = 'none';
+            textArea.style.background = 'transparent';
+
             document.body.appendChild(textArea);
             textArea.focus();
             textArea.select();
+
             try {
-              document.execCommand('copy');
-              setCopiedId(id);
-              setTimeout(() => setCopiedId(null), 1500);
-            } catch {}
+              const successful = document.execCommand('copy');
+              if (successful) {
+                setCopiedId(id);
+                setTimeout(() => setCopiedId(null), 2500);
+              } else {
+                alert('Unable to copy');
+              }
+            } catch {
+              alert('Unable to copy');
+            }
             document.body.removeChild(textArea);
           }
         };

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { getPost, getAllPosts } from '@/lib/posts';
 import { notFound } from 'next/navigation';
-import MarkdownRenderer from '@/components/MarkdownRenderer';
+import MarkdownClientWrapper from '@/components/MarkdownClientWrapper'; // ✅ not MarkdownRenderer
 
 export default async function BlogPostPage({ params }) {
   const { category, subcategory, slug } = params;
@@ -17,10 +17,12 @@ export default async function BlogPostPage({ params }) {
     <main lang={post.lang} className="max-w-5xl mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold mb-2 text-center">{post.title}</h1>
 
-      <p
-        className="text-sm text-gray-500 mb-6 uppercase text-center"
-        style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-        🗂 {category} / {subcategory}
+      <p className="text-sm text-gray-500 mb-6 uppercase text-center flex justify-center items-center gap-2">
+        <span style={{ fontFamily: 'var(--font-poppins)' }}>
+          🗂 {category} / {subcategory}
+        </span>
+        <span className="mx-2">•</span>
+        <time style={{ fontFamily: 'var(--font-poppins)' }}>{new Date(post.date).toLocaleDateString()}</time>
       </p>
 
       {post.image && (
@@ -29,7 +31,8 @@ export default async function BlogPostPage({ params }) {
         </div>
       )}
 
-      <MarkdownRenderer content={post.content} lang={post.lang} />
+      {/* ✅ Render client component safely */}
+      <MarkdownClientWrapper content={post.content} lang={post.lang} />
     </main>
   );
 }

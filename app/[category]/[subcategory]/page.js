@@ -8,22 +8,26 @@ function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+// Tell Next.js to statically generate pages for all category/subcategory combos
+export function generateStaticParams() {
+  const posts = getAllPosts();
+
+  // Create a set of unique {category, subcategory} pairs
+  const combos = new Set();
+  posts.forEach((post) => {
+    combos.add(JSON.stringify({ category: post.category, subcategory: post.subcategory }));
+  });
+
+  return Array.from(combos).map((str) => JSON.parse(str));
+}
+
 export default function SubcategoryPage({ params }) {
   const { category, subcategory } = params;
+
   const posts = getAllPosts().filter((post) => post.category === category && post.subcategory === subcategory);
 
-  // if (posts.length === 0) {
-  //   return (
-  //     <main className="max-w-4xl mx-auto px-4 py-10">
-  //       <h1 className="text-4xl font-bold text-center mb-10">
-  //         No posts found in {capitalizeFirstLetter(category)} / {capitalizeFirstLetter(subcategory)}
-  //       </h1>
-  //     </main>
-  //   );
-  // }
-
   if (posts.length === 0) {
-    return notFound(); // ✅ Trigger universal 404
+    return notFound();
   }
 
   return (

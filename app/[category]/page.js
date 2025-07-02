@@ -3,6 +3,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
+export async function generateStaticParams() {
+  const posts = getAllPosts();
+  const categories = [...new Set(posts.map((post) => post.category))];
+  return categories.map((category) => ({ category }));
+}
+
 function capitalizeFirstLetter(str) {
   if (!str) return '';
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -12,18 +18,8 @@ export default function CategoryPage({ params }) {
   const { category } = params;
   const posts = getAllPosts().filter((post) => post.category === category);
 
-  // if (posts.length === 0) {
-  //   return (
-  //     <main className="max-w-4xl mx-auto px-4 py-10">
-  //       <h1 className="text-4xl font-bold text-center mb-10">
-  //         <p>{`No posts found in category "${capitalizeFirstLetter(category)}"`}</p>
-  //       </h1>
-  //     </main>
-  //   );
-  // }
-
   if (posts.length === 0) {
-    return notFound(); // ✅ Trigger universal 404
+    return notFound();
   }
 
   return (
@@ -52,11 +48,9 @@ export default function CategoryPage({ params }) {
             <h2 lang={post.lang} className="text-xl font-semibold mb-2">
               {post.title}
             </h2>
-
             <p lang={post.lang} className="text-sm mb-2">
               {post.description || 'No description provided.'}
             </p>
-
             <span
               className="text-xs text-blue-500 uppercase tracking-wider"
               style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
