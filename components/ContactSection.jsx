@@ -13,26 +13,26 @@ export default function ContactSection() {
       </p>
 
       <div className="flex flex-wrap justify-center gap-4 mb-10">
-        <a href="mailto:your@email.com">
+        <a href="mailto:siam.mehraf@email.com">
           <Button variant="outline">
             <Mail className="w-4 h-4 mr-2" />
             Email Me
           </Button>
         </a>
         <a href="https://github.com/siammehraf" target="_blank" rel="noreferrer">
-          <Button variant="ghost">
+          <Button variant="outline">
             <Github className="w-4 h-4 mr-2" />
             GitHub
           </Button>
         </a>
         <a href="https://www.linkedin.com/in/siammehraf" target="_blank" rel="noreferrer">
-          <Button variant="ghost">
+          <Button variant="outline">
             <Linkedin className="w-4 h-4 mr-2" />
             LinkedIn
           </Button>
         </a>
         <a href="https://youtube.com/siammehraf" target="_blank" rel="noreferrer">
-          <Button variant="ghost">
+          <Button variant="outline">
             <Youtube className="w-4 h-4 mr-2" />
             YouTube
           </Button>
@@ -40,9 +40,6 @@ export default function ContactSection() {
       </div>
 
       {/* Optional Form */}
-      {/* You can connect this with Formspree or Resend if needed */}
-      {/* Remove this block if you want to keep just social links */}
-
       <form action="https://formspree.io/f/YOUR_ID" method="POST" className="space-y-4 max-w-md mx-auto text-left">
         <input
           type="text"
@@ -61,7 +58,7 @@ export default function ContactSection() {
         <textarea
           name="message"
           placeholder="Your message"
-          rows="5"
+          rows={5}
           required
           className="w-full border rounded-lg px-4 py-2"></textarea>
         <Button type="submit" className="w-full">
