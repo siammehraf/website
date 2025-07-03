@@ -1,0 +1,33 @@
+.markdownContainer {
+  text-align: justify;
+}
+
+.markdownContainer :global(p) {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Remove vertical gap between headings and immediately following paragraph */
+.markdownContainer :global(h1 + p),
+.markdownContainer :global(h2 + p),
+.markdownContainer :global(h3 + p),
+.markdownContainer :global(h4 + p),
+.markdownContainer :global(h5 + p),
+.markdownContainer :global(h6 + p) {
+  margin-top: 0 !important;
+}
+
+/* Optional: add spacing for lists */
+.markdownContainer :global(ul),
+.markdownContainer :global(ol) {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+}
+
+/* Optional: spacing for subheadings */
+.markdownContainer :global(h2),
+.markdownContainer :global(h3) {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}

@@ -18,17 +18,17 @@ export default function LatestBlogs() {
             <article
               key={slug}
               lang={lang}
-              className="rounded-xl border border-border shadow-sm overflow-hidden bg-card flex flex-col"
-              style={{ fontFamily: 'var(--font-poppins)' }} // default Poppins for the whole card
-            >
+              className="rounded-xl border border-border shadow-sm bg-card flex flex-col p-2" // added padding here
+              style={{ fontFamily: 'var(--font-poppins)' }}>
               <Link
                 href={`/${slug}`}
                 lang={lang}
-                className="block relative aspect-video rounded-md overflow-hidden mb-4">
+                className="block relative aspect-video rounded-lg overflow-hidden mb-4" // bigger rounding
+              >
                 <Image src={image} alt={title} fill className="object-cover" sizes="(max-width: 640px) 100vw, 33vw" />
               </Link>
 
-              <div className="p-6 flex flex-col flex-grow">
+              <div className="p-4 flex flex-col flex-grow">
                 <h3
                   lang={lang}
                   className="text-xl font-semibold text-foreground mb-2"
@@ -45,8 +45,7 @@ export default function LatestBlogs() {
 
                 <div
                   className="mt-4 flex justify-between items-center"
-                  style={{ fontFamily: 'var(--font-poppins)', color: 'inherit' }} // force Poppins font here always
-                >
+                  style={{ fontFamily: 'var(--font-poppins)', color: 'inherit' }}>
                   <time className="text-sm text-muted-foreground" style={{ fontFamily: 'var(--font-poppins)' }}>
                     {new Date(date).toLocaleDateString(undefined, {
                       year: 'numeric',

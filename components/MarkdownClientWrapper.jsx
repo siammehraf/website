@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import styles from './MarkdownClientWrapper.module.css';
 
 const MarkdownRenderer = dynamic(() => import('./MarkdownRenderer'), {
   ssr: false,
@@ -8,5 +9,9 @@ const MarkdownRenderer = dynamic(() => import('./MarkdownRenderer'), {
 });
 
 export default function MarkdownClientWrapper({ content, lang }) {
-  return <MarkdownRenderer content={content} lang={lang} />;
+  return (
+    <div className={`prose prose-lg prose-blue max-w-none ${styles.markdownContainer}`}>
+      <MarkdownRenderer content={content} lang={lang} />
+    </div>
+  );
 }

@@ -22,19 +22,6 @@ export default function MarkdownRenderer({ content, lang }) {
   }, [content]);
 
   const components = {
-    // Remove p override, or try this version if you want to keep it:
-    /*
-    p({ node, children }) {
-      const hasBlockChild = node.children.some(
-        (child) => child.type === 'element' && ['pre', 'div', 'table'].includes(child.tagName)
-      );
-      if (hasBlockChild) {
-        return <>{children}</>;
-      }
-      return <p>{children}</p>;
-    },
-    */
-
     code({ node, inline, className, children, ...props }) {
       const codeText = String(children).replace(/\n$/, '');
 
@@ -65,6 +52,7 @@ export default function MarkdownRenderer({ content, lang }) {
             const textArea = document.createElement('textarea');
             textArea.value = textToCopy;
 
+            // Styling to avoid layout shifts
             textArea.style.position = 'fixed';
             textArea.style.top = '0';
             textArea.style.left = '0';
@@ -90,8 +78,11 @@ export default function MarkdownRenderer({ content, lang }) {
               }
             } catch {
               alert('Unable to copy');
+            } finally {
+              if (textArea && textArea.parentNode) {
+                textArea.parentNode.removeChild(textArea);
+              }
             }
-            document.body.removeChild(textArea);
           }
         };
 

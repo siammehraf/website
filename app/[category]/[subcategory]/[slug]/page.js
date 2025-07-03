@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { getPost, getAllPosts } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import MarkdownClientWrapper from '@/components/MarkdownClientWrapper'; // ✅ not MarkdownRenderer
+import Tags from '@/components/Tags';
 
 export default async function BlogPostPage({ params }) {
   const { category, subcategory, slug } = params;
@@ -22,7 +23,13 @@ export default async function BlogPostPage({ params }) {
           🗂 {category} / {subcategory}
         </span>
         <span className="mx-2">•</span>
-        <time style={{ fontFamily: 'var(--font-poppins)' }}>{new Date(post.date).toLocaleDateString()}</time>
+        <time style={{ fontFamily: 'var(--font-poppins)' }}>
+          {new Date(post.date).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+          })}
+        </time>
       </p>
 
       {post.image && (
@@ -31,8 +38,11 @@ export default async function BlogPostPage({ params }) {
         </div>
       )}
 
-      {/* ✅ Render client component safely */}
+      {/* Render markdown content */}
       <MarkdownClientWrapper content={post.content} lang={post.lang} />
+
+      {/* Render tags */}
+      <Tags tags={post.tags} />
     </main>
   );
 }
