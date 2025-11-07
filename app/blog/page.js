@@ -1,14 +1,14 @@
+import { getAllBlogs } from '@/lib/getAllBlogs';
+import Link from 'next/link';
+import Image from 'next/image';
+
 export const metadata = {
   title: 'Blog | Siam Mehraf',
   description: 'Siam Mehraf Blog',
 };
 
-import { getAllPosts } from '@/lib/posts';
-import Link from 'next/link';
-import Image from 'next/image';
-
 export default function BlogPage() {
-  const posts = getAllPosts();
+  const posts = getAllBlogs();
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-10">
@@ -17,10 +17,9 @@ export default function BlogPage() {
         {posts.map((post) => (
           <Link
             key={post.slug}
-            href={`/${post.category}/${post.subcategory}/${post.slug}`}
+            href={`/${post.urlSlug}`}
             className="block border border-gray-200 rounded-lg p-4 hover:shadow-lg transition"
-            lang={post.lang} // set language on link container
-          >
+            lang={post.lang}>
             {post.image && (
               <div className="w-full h-48 relative mb-4 rounded-md overflow-hidden">
                 <Image
@@ -44,9 +43,9 @@ export default function BlogPage() {
 
             <span
               className="text-xs text-blue-500 uppercase tracking-wider"
-              style={{ fontFamily: 'var(--font-poppins), sans-serif' }} // force Poppins font
-            >
-              {post.category} / {post.subcategory}
+              style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
+              {post.category}
+              {post.subcategory !== 'general' ? ` / ${post.subcategory}` : ''}
             </span>
           </Link>
         ))}
