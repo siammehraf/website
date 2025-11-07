@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'About Me | Siam Mehraf',
+  description: 'Learn more about Siam Mehraf, his journey, achievements, and creative work.',
+};
+
 import React, { Suspense, lazy } from 'react';
 import Image from 'next/image';
 

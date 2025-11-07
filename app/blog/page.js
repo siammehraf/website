@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'Blog | Siam Mehraf',
+  description: 'Siam Mehraf Blog',
+};
+
 import { getAllPosts } from '@/lib/posts';
 import Link from 'next/link';
 import Image from 'next/image';
