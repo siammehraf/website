@@ -32,22 +32,22 @@ export default function Footer() {
 
         {/* Social Icons */}
         <div className="flex gap-3">
-          <a href="https://github.com/yourusername" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <a href="https://github.com/siammehraf" target="_blank" rel="noreferrer" aria-label="GitHub">
             <Button variant="ghost" className="p-2 text-gray-300 hover:text-white">
               <Github className="w-5 h-5" />
             </Button>
           </a>
-          <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <a href="https://linkedin.com/in/siammehraf" target="_blank" rel="noreferrer" aria-label="LinkedIn">
             <Button variant="ghost" className="p-2 text-gray-300 hover:text-white">
               <Linkedin className="w-5 h-5" />
             </Button>
           </a>
-          <a href="https://youtube.com/yourchannel" target="_blank" rel="noreferrer" aria-label="YouTube">
+          <a href="https://youtube.com/@siammehraf" target="_blank" rel="noreferrer" aria-label="YouTube">
             <Button variant="ghost" className="p-2 text-gray-300 hover:text-white">
               <Youtube className="w-5 h-5" />
             </Button>
           </a>
-          <a href="mailto:your@email.com" aria-label="Email">
+          <a href="mailto:siammehraf@gmail.com" aria-label="Email">
             <Button variant="ghost" className="p-2 text-gray-300 hover:text-white">
               <Mail className="w-5 h-5" />
             </Button>
