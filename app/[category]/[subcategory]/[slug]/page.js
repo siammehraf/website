@@ -1,8 +1,37 @@
 import Image from 'next/image';
 import { getPost, getAllPosts } from '@/lib/posts';
 import { notFound } from 'next/navigation';
-import MarkdownClientWrapper from '@/components/MarkdownClientWrapper'; // ✅ not MarkdownRenderer
+import MarkdownClientWrapper from '@/components/MarkdownClientWrapper';
 import Tags from '@/components/Tags';
+
+export async function generateMetadata({ params }) {
+  const { category, subcategory, slug } = params;
+
+  try {
+    const post = await getPost(category, subcategory, slug);
+
+    return {
+      title: `${post.title} | Siam Mehraf`,
+      description: post.description || post.excerpt || post.title,
+      openGraph: {
+        title: `${post.title} | Siam Mehraf`,
+        description: post.description || post.excerpt || post.title,
+        images: post.image ? [post.image] : [],
+        type: 'article',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: `${post.title} | Siam Mehraf`,
+        description: post.description || post.excerpt || post.title,
+        images: post.image ? [post.image] : [],
+      },
+    };
+  } catch {
+    return {
+      title: 'Post Not Found | Siam Mehraf',
+    };
+  }
+}
 
 export default async function BlogPostPage({ params }) {
   const { category, subcategory, slug } = params;
@@ -38,10 +67,8 @@ export default async function BlogPostPage({ params }) {
         </div>
       )}
 
-      {/* Render markdown content */}
       <MarkdownClientWrapper content={post.content} lang={post.lang} />
 
-      {/* Render tags */}
       <Tags tags={post.tags} />
     </main>
   );
