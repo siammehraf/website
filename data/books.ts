@@ -2,16 +2,16 @@ export const books = [
   {
     title: 'Nefartiti',
     cover: '/images/books/nefartiti.jpg',
-    link: '#',
+    link: '/books/nefartiti',
   },
   {
     title: 'Onno Boshonter Shopno',
     cover: '/images/books/onno-boshonter-shopno.jpg',
-    link: '#',
+    link: '/books/onno-boshonter-shopno',
   },
   {
     title: 'Chotushkon',
     cover: '/images/books/chotushkon.jpg',
-    link: '#',
+    link: '/books/chotushkon',
   },
 ];
