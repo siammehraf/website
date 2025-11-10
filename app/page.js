@@ -38,7 +38,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Siam Mehraf | Author & Filmmaker',
     description: 'Explore books, films, projects, skills, and blog posts from Siam Mehraf.',
-    images: ['/og/homepage.png'],
+    images: ['/hero-img.jpg'],
   },
 };
 
