@@ -27,7 +27,7 @@ export const metadata = {
     siteName: 'Siam Mehraf',
     images: [
       {
-        url: '/og/homepage.png', // optional OG image for social sharing
+        url: '/hero-img.jpg', // optional OG image for social sharing
         width: 1200,
         height: 630,
         alt: 'Siam Mehraf Homepage',
@@ -36,7 +36,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Siam Mehraf | Author, Filmmaker, Web Developer',
+    title: 'Siam Mehraf | Author & Filmmaker',
     description: 'Explore books, films, projects, skills, and blog posts from Siam Mehraf.',
     images: ['/og/homepage.png'],
   },
