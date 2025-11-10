@@ -3,6 +3,7 @@ import { getPost, getAllPosts } from '@/lib/posts';
 import { notFound } from 'next/navigation';
 import MarkdownClientWrapper from '@/components/MarkdownClientWrapper';
 import Tags from '@/components/Tags';
+import SocialShare from '@/components/SocialShare';
 
 export async function generateMetadata({ params }) {
   const { category, subcategory, slug } = params;
@@ -70,6 +71,8 @@ export default async function BlogPostPage({ params }) {
       <MarkdownClientWrapper content={post.content} lang={post.lang} />
 
       <Tags tags={post.tags} />
+
+      <SocialShare title={post.title} url={`https://siammehraf.com/${category}/${subcategory}/${slug}`} />
     </main>
   );
 }
