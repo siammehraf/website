@@ -21,10 +21,34 @@ const notoSerifBengali = Noto_Serif_Bengali({
   display: 'swap',
 });
 
+// Default metadata for the whole site
 export const metadata = {
   title: 'Siam Mehraf - Author | Storyteller',
   description:
-    'Siam Mehraf (1998-Present) is a Bangladeshi Author, Screenwriter, Film-Maker and Novelist. He is Known for Chotushkon and Nefartiti.',
+    'Siam Mehraf (1998-Present) is a Bangladeshi Author, Screenwriter, Film-Maker and Novelist. Known for works like Chotushkon and Nefartiti.',
+  metadataBase: new URL('https://siammehraf.com'),
+  alternates: { canonical: 'https://siammehraf.com' },
+  openGraph: {
+    title: 'Siam Mehraf - Author | Storyteller',
+    description: 'Explore the works of Siam Mehraf – Author, Filmmaker, Screenwriter, and Novelist.',
+    url: 'https://siammehraf.com',
+    type: 'website',
+    siteName: 'Siam Mehraf',
+    images: [
+      {
+        url: '/og/default.png', // fallback OG image
+        width: 1200,
+        height: 630,
+        alt: 'Siam Mehraf Website',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Siam Mehraf - Author | Storyteller',
+    description: 'Explore the works of Siam Mehraf – Author, Filmmaker, Screenwriter, and Novelist.',
+    images: ['/og/default.png'],
+  },
 };
 
 export default function RootLayout({ children }) {
