@@ -5,9 +5,10 @@ author: 'Siam Mehraf'
 bookAuthor: 'সিয়াম মেহরাফ'
 publishYear: '২০২০'
 cover: '/images/books/chotushkon.jpg'
+image: '/images/books/chotushkon.jpg'
 
-ratingRokomari: '4.5' # add manually if you want
-ratingGoodreads: '4.57' # add manually
+ratingRokomari: '4.5'
+ratingGoodreads: '4.57'
 
 genre:
   - উপন্যাস
@@ -24,10 +25,12 @@ tags:
   - বইমেলা ২০২৩
 
 lang: 'bn'
+category: 'books'
+subcategory: 'novels'
 slug: ''
-date: 2023-07-06
+date: 2020-01-01
 
-description: 'একটা ভয়াবহ দূর্ঘটনায় প্রাণ হারালো মাত্র ৫ বছর বয়সী এক নিষ্পাপ শিশু। কিন্তু পরক্ষনেই বেরিয়ে এলো এটা আসলে কোন দূর্ঘটনা নয়, খুন!...'
+description: 'একটা ভয়াবহ দূর্ঘটনায় প্রাণ হারালো মাত্র ৫ বছর বয়সী এক নিষ্পাপ শিশু...'
 ---
 
 একটা ভয়াবহ দূর্ঘটনায় প্রাণ হারালো মাত্র ৫ বছর বয়সী এক নিষ্পাপ শিশু। কিন্তু পরক্ষনেই বেরিয়ে এলো এটা আসলে কোন দূর্ঘটনা নয়, খুন! খুনের তদন্ত করতে মাঠে নামে গোয়েন্দা সিয়াম এবং তার দল। একে একে বেরিয়ে আসে আরো কিছু চাঞ্চল্যকর তথ্য! আরো কিছু মর্মান্তিক ঘটনার মারপ্যাঁচের সাথে সম্পর্ক খুঁজে পাওয়া যায় এই খুনের।

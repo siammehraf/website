@@ -17,11 +17,26 @@ const poppins = Poppins({
   display: 'swap',
 });
 
-// Load markdown file by slug
+// Recursively find the markdown file by slug
+function findBookFile(dir, slug) {
+  const entries = fs.readdirSync(dir);
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry);
+    const stat = fs.statSync(fullPath);
+    if (stat.isDirectory()) {
+      const found = findBookFile(fullPath, slug);
+      if (found) return found;
+    } else if (entry.endsWith('.md') && entry.replace(/\.md$/, '') === slug) {
+      return fullPath;
+    }
+  }
+  return null;
+}
+
 function getBookBySlug(slug) {
-  const booksDir = path.join(process.cwd(), 'posts/books');
-  const filePath = path.join(booksDir, `${slug}.md`);
-  if (!fs.existsSync(filePath)) return null;
+  const booksDir = path.join(process.cwd(), 'posts', 'books');
+  const filePath = findBookFile(booksDir, slug);
+  if (!filePath) return null;
 
   const fileContent = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContent);
@@ -29,18 +44,29 @@ function getBookBySlug(slug) {
   return { ...data, content, slug };
 }
 
-// Generate static params for SSG
+// Generate static params for all books
 export async function generateStaticParams() {
-  const booksDir = path.join(process.cwd(), 'posts/books');
-  if (!fs.existsSync(booksDir)) return [];
+  const booksDir = path.join(process.cwd(), 'posts', 'books');
+  const slugs = [];
 
-  const files = fs.readdirSync(booksDir).filter((f) => f.endsWith('.md'));
+  function readDirRecursive(dir) {
+    const entries = fs.readdirSync(dir);
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry);
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        readDirRecursive(fullPath);
+      } else if (entry.endsWith('.md')) {
+        slugs.push(entry.replace(/\.md$/, ''));
+      }
+    }
+  }
 
-  return files.map((file) => ({
-    slug: file.replace(/\.md$/, ''),
-  }));
+  readDirRecursive(booksDir);
+  return slugs.map((slug) => ({ slug }));
 }
 
+// SEO metadata
 export async function generateMetadata({ params }) {
   const book = getBookBySlug(params.slug);
   if (!book) return { title: 'Book Not Found | Siam Mehraf' };
@@ -48,6 +74,30 @@ export async function generateMetadata({ params }) {
   return {
     title: `${book.title} | Siam Mehraf`,
     description: book.description || '',
+    keywords: [
+      book.title,
+      book.bookAuthor || book.author,
+      'Siam Mehraf',
+      ...(book.genre || []),
+      ...(book.tags || []),
+      'Bangladesh books',
+      'Bengali books',
+    ],
+    openGraph: {
+      title: `${book.title} | Siam Mehraf`,
+      description: book.description || '',
+      type: 'book',
+      url: `https://siammehraf.com/books/${book.slug}`,
+      images: book.cover
+        ? [{ url: `https://siammehraf.com${book.cover}`, width: 600, height: 900, alt: book.title }]
+        : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${book.title} | Siam Mehraf`,
+      description: book.description || '',
+      images: book.cover ? [`https://siammehraf.com${book.cover}`] : [],
+    },
   };
 }
 
@@ -87,7 +137,7 @@ export default function BookPage({ params }) {
       </div>
 
       {/* Buy Links */}
-      <div className="flex flex-col gap-3 items-center">
+      <div className="flex flex-col gap-3 items-center mb-6">
         {book.buyLinks?.rokomari && (
           <a
             href={book.buyLinks.rokomari}
@@ -118,9 +168,7 @@ export default function BookPage({ params }) {
       </div>
 
       {/* Content */}
-      <div className="mt-6 text-gray-800">
-        <pre className="whitespace-pre-wrap">{book.content}</pre>
-      </div>
+      <div className="mt-6 text-gray-800 text-justify whitespace-pre-wrap">{book.content}</div>
     </main>
   );
 }

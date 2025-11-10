@@ -5,6 +5,7 @@ author: 'Siam Mehraf'
 bookAuthor: 'সিয়াম মেহরাফ'
 publishYear: '২০২'
 cover: '/images/books/onno-boshonter-shopno.jpg'
+image: '/images/books/onno-boshonter-shopno.jpg'
 
 ratingRokomari: '4.5' # add manually if you want
 ratingGoodreads: '4.25' # add manually
@@ -24,8 +25,10 @@ tags:
   - বইমেলা ২০২৩
 
 lang: 'bn'
+category: 'books'
+subcategory: 'novels'
 slug: ''
-date: 2023-07-06
+date: 2020-01-01
 
 description: 'ঘুম ভাঙার পরেই নিজেকে আবিষ্কার করে সে অন্য কোনো জগতে আছে। সামনে বিশাল এক রাজপ্রাসাদ দেখে সে দ্বিধায় পড়ে যায়।...'
 ---

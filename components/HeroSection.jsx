@@ -42,7 +42,7 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}>
-            <Button asChild size="lg" className="w-full sm:w-auto">
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
               <Link href="/blog">Read My Writings</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">

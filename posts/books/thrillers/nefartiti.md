@@ -5,6 +5,7 @@ author: 'Siam Mehraf'
 bookAuthor: 'সিয়াম মেহরাফ'
 publishYear: '২০২৩'
 cover: '/images/books/nefartiti.jpg'
+image: '/images/books/nefartiti.jpg'
 
 ratingRokomari: '4.5' # add manually if you want
 ratingGoodreads: '4.71' # add manually
@@ -24,8 +25,10 @@ tags:
   - বইমেলা ২০২৩
 
 lang: 'bn'
+category: 'books'
+subcategory: 'novels'
 slug: ''
-date: 2023-07-06
+date: 2020-01-01
 
 description: 'প্রায় ১৫ বছর পরে প্রাক্তন প্রেমিকার সাথে দেখা হতে যাচ্ছে বাংলাদেশের বর্তমান সময়ের সবচেয়ে জনপ্রিয় লেখক আহনাফ আয়ানের। অন্যদিকে, কোনো এক উন্মাদ খুনি একের পরে এক খুন করে যাচ্ছে।...'
 ---
