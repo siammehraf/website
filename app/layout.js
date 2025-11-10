@@ -62,8 +62,8 @@ export default function RootLayout({ children }) {
         </ThemeProvider>
         <Footer />
         <BackToTopButton />
-        <Analytics />
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
