@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BackToTopButton from '@/components/ui/BackToTopButton';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -62,6 +63,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <BackToTopButton />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
