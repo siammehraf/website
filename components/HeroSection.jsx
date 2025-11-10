@@ -49,9 +49,7 @@ export default function HeroSection() {
               <Link href="/projects">Explore Projects</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-              <a href="https://youtube.com/@siammehraf" target="_blank" rel="noopener noreferrer">
-                Watch Films
-              </a>
+              <Link href="/films">Know My Films</Link>
             </Button>
           </motion.div>
         </div>
