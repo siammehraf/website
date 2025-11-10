@@ -24,13 +24,13 @@ const notoSerifBengali = Noto_Serif_Bengali({
 
 // Default metadata for the whole site
 export const metadata = {
-  title: 'Siam Mehraf - Author | Storyteller',
+  title: 'Siam Mehraf - Author & Filmmaker',
   description:
     'Siam Mehraf (1998-Present) is a Bangladeshi Author, Screenwriter, Film-Maker and Novelist. Known for works like Chotushkon and Nefartiti.',
   metadataBase: new URL('https://siammehraf.com'),
   alternates: { canonical: 'https://siammehraf.com' },
   openGraph: {
-    title: 'Siam Mehraf - Author | Storyteller',
+    title: 'Siam Mehraf - Author | Filmmaker',
     description: 'Explore the works of Siam Mehraf – Author, Filmmaker, Screenwriter, and Novelist.',
     url: 'https://siammehraf.com',
     type: 'website',

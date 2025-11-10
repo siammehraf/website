@@ -13,15 +13,14 @@ import React from 'react';
 // Home page metadata for SEO & social sharing
 export const metadata = {
   title: 'Siam Mehraf | Author & Filmmaker',
-  description:
-    'Welcome to the official website of Siam Mehraf – explore books, films, projects, skills, and blog posts.',
+  description: 'Welcome to the official website of Siam Mehraf – explore books, films, projects, skills, and writings.',
   metadataBase: new URL('https://siammehraf.com'),
   alternates: {
     canonical: 'https://siammehraf.com',
   },
   openGraph: {
-    title: 'Siam Mehraf | Author, Filmmaker, Web Developer',
-    description: 'Explore books, films, projects, skills, and blog posts from Siam Mehraf.',
+    title: 'Siam Mehraf | Author & Filmmaker',
+    description: 'Explore books, films, projects, skills, and writings from Siam Mehraf.',
     url: 'https://siammehraf.com',
     type: 'website',
     siteName: 'Siam Mehraf',
@@ -37,7 +36,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Siam Mehraf | Author & Filmmaker',
-    description: 'Explore books, films, projects, skills, and blog posts from Siam Mehraf.',
+    description: 'Explore books, films, projects, skills, and writings from Siam Mehraf.',
     images: ['/hero-img.jpg'],
   },
 };
