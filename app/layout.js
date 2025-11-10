@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BackToTopButton from '@/components/ui/BackToTopButton';
+import { Analytics } from '@vercel/analytics/next';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
         </ThemeProvider>
         <Footer />
         <BackToTopButton />
+        <Analytics />
       </body>
     </html>
   );
