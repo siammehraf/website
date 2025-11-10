@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function HeroSection() {
   return (
@@ -42,10 +43,10 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}>
             <Button asChild size="lg" className="w-full sm:w-auto">
-              <a href="/blog">Read My Writings</a>
+              <Link href="/blog">Read My Writings</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-              <a href="/projects">Explore Projects</a>
+              <Link href="/projects">Explore Projects</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
               <a href="https://youtube.com/@siammehraf" target="_blank" rel="noopener noreferrer">
