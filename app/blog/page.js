@@ -4,7 +4,18 @@ import Image from 'next/image';
 
 export const metadata = {
   title: 'Blog | Siam Mehraf',
-  description: 'Siam Mehraf Blog',
+  description: 'Read all blog posts by Siam Mehraf',
+  openGraph: {
+    title: 'Blog | Siam Mehraf',
+    description: 'Read all blog posts by Siam Mehraf',
+    url: 'https://siammehraf.com/blog',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog | Siam Mehraf',
+    description: 'Read all blog posts by Siam Mehraf',
+  },
 };
 
 export default function BlogPage() {
@@ -13,13 +24,16 @@ export default function BlogPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-10">
       <h1 className="text-4xl font-bold text-center mb-10">📚 My Blog</h1>
+
       <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
         {posts.map((post) => (
           <Link
             key={post.slug}
             href={`/${post.urlSlug}`}
             className="block border border-gray-200 rounded-lg p-4 hover:shadow-lg transition"
-            lang={post.lang}>
+            lang={post.lang}
+            prefetch={false} // prevents unnecessary prefetch
+          >
             {post.image && (
               <div className="w-full h-48 relative mb-4 rounded-md overflow-hidden">
                 <Image
