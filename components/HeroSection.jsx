@@ -42,14 +42,28 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}>
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-              <Link href="/blog">Read My Writings</Link>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto border-black dark:border-white text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800">
+              <Link href="/blog">Enter My Mind</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-              <Link href="/projects">Explore Projects</Link>
+
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto border-black dark:border-white text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800">
+              <Link href="/books">Turn My Pages</Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-              <Link href="/films">Know My Films</Link>
+
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto border-black dark:border-white text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800">
+              <Link href="/films">Watch My Vision</Link>
             </Button>
           </motion.div>
         </div>
