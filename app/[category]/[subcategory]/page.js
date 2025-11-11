@@ -2,6 +2,7 @@ import { getAllPosts } from '@/lib/posts';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import Head from 'next/head';
 
 // Capitalize first letter
 function capitalizeFirstLetter(str) {
@@ -29,9 +30,7 @@ export async function generateMetadata({ params }) {
       url,
       type: 'website',
       siteName: 'Siam Mehraf Blog',
-      images: [
-        { url: '/og/default.png', width: 1200, height: 630, alt: title }, // optional dynamic OG image
-      ],
+      images: [{ url: '/og/default.png', width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -58,40 +57,81 @@ export default function SubcategoryPage({ params }) {
 
   if (posts.length === 0) return notFound();
 
+  // JSON-LD Schema for SEO - per-post data
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: `Category: ${capitalizeFirstLetter(category)} / ${capitalizeFirstLetter(subcategory)}`,
+    url: `https://siammehraf.com/${category}/${subcategory}`,
+    description: `All posts under ${capitalizeFirstLetter(category)} / ${capitalizeFirstLetter(subcategory)}.`,
+    keywords: [
+      'সিয়াম মেহরাফ',
+      'সিয়াম মেহরাফ ওয়েবসাইট',
+      'সিয়াম মেহরাফ ব্লগ',
+      'সিয়াম মেহরাফ গল্পসমূহ',
+      'সিয়াম মেহরাফ থ্রিলার',
+      'সিয়াম মেহরাফ বই',
+      'Siam Mehraf',
+      'Siam Mehraf Website',
+      'Siam Mehraf Blog',
+      'Siam Mehraf Writings',
+      'Siam Mehraf Thriller',
+      'Siam Mehraf Books',
+    ],
+    hasPart: posts.map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.title,
+      url: `https://siammehraf.com/${post.category}/${post.subcategory}/${post.slug}`,
+      datePublished: post.date,
+      author: {
+        '@type': 'Person',
+        name: post.author || 'Siam Mehraf',
+      },
+      image: post.image || undefined,
+      description: post.description || undefined,
+    })),
+  };
+
   return (
-    <main className="max-w-4xl mx-auto px-4 py-10">
-      <div className="text-center mb-10">
-        <h1 className="text-2xl font-semibold mb-2">Category: {capitalizeFirstLetter(category)}</h1>
-        <h2 className="text-xl font-medium">Subcategory: {capitalizeFirstLetter(subcategory)}</h2>
-      </div>
+    <>
+      <Head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      </Head>
 
-      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
-        {posts.map((post) => (
-          <Link
-            key={post.slug}
-            href={`/${post.category}/${post.subcategory}/${post.slug}`}
-            className="block border border-gray-300 dark:border-gray-700 rounded-lg p-4 hover:shadow-lg transition"
-            lang={post.lang}>
-            {post.image && (
-              <div className="w-full h-48 relative mb-4 rounded-md overflow-hidden">
-                <Image src={post.image} alt={post.title} fill style={{ objectFit: 'cover' }} sizes="100vw" />
-              </div>
-            )}
+      <main className="max-w-4xl mx-auto px-4 py-10">
+        <div className="text-center mb-10">
+          <h1 className="text-2xl font-semibold mb-2">Category: {capitalizeFirstLetter(category)}</h1>
+          <h2 className="text-xl font-medium">Subcategory: {capitalizeFirstLetter(subcategory)}</h2>
+        </div>
 
-            <h2 lang={post.lang} className="text-xl font-semibold mb-2">
-              {post.title}
-            </h2>
-            <p lang={post.lang} className="text-sm mb-2 opacity-80">
-              {post.description || 'No description provided.'}
-            </p>
-            <span
-              className="text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider"
-              style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
-              {post.category} / {post.subcategory}
-            </span>
-          </Link>
-        ))}
-      </div>
-    </main>
+        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
+          {posts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/${post.category}/${post.subcategory}/${post.slug}`}
+              className="block border border-gray-300 dark:border-gray-700 rounded-lg p-4 hover:shadow-lg transition"
+              lang={post.lang}>
+              {post.image && (
+                <div className="w-full h-48 relative mb-4 rounded-md overflow-hidden">
+                  <Image src={post.image} alt={post.title} fill style={{ objectFit: 'cover' }} sizes="100vw" />
+                </div>
+              )}
+
+              <h2 lang={post.lang} className="text-xl font-semibold mb-2">
+                {post.title}
+              </h2>
+              <p lang={post.lang} className="text-sm mb-2 opacity-80">
+                {post.description || 'No description provided.'}
+              </p>
+              <span
+                className="text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider"
+                style={{ fontFamily: 'var(--font-poppins), sans-serif' }}>
+                {post.category} / {post.subcategory}
+              </span>
+            </Link>
+          ))}
+        </div>
+      </main>
+    </>
   );
 }

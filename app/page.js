@@ -9,6 +9,7 @@ import SkillsSection from '@/components/SkillsSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import WorkShowcase from '@/components/WorkShowcase';
 import React from 'react';
+import Head from 'next/head';
 
 // Home page metadata for SEO & social sharing
 export const metadata = {
@@ -26,7 +27,7 @@ export const metadata = {
     siteName: 'Siam Mehraf',
     images: [
       {
-        url: '/hero-img.jpg', // optional OG image for social sharing
+        url: '/hero-img.jpg',
         width: 1200,
         height: 630,
         alt: 'Siam Mehraf Homepage',
@@ -42,19 +43,64 @@ export const metadata = {
 };
 
 const HomePage = () => {
+  // JSON-LD (Schema.org)
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Siam Mehraf',
+    url: 'https://siammehraf.com',
+
+    // Updated SEO Keywords (Bengali + English)
+    alternateName: [
+      // Bengali Keywords
+      'সিয়াম মেহরাফ',
+      'সিয়াম মেহরাফ ওয়েবসাইট',
+      'সিয়াম মেহরাফ ব্লগ',
+      'সিয়াম মেহরাফ গল্পসমূহ',
+      'সিয়াম মেহরাফ থ্রিলার',
+      'সিয়াম মেহরাফ বই',
+
+      // English Keywords
+      'Siam Mehraf',
+      'Siam Mehraf Website',
+      'Siam Mehraf Blog',
+      'Siam Mehraf Writings',
+      'Siam Mehraf Thriller',
+      'Siam Mehraf Books',
+    ],
+
+    description:
+      'Official website of Siam Mehraf. Explore books, films, blog posts, stories, skills, and creative projects.',
+    author: {
+      '@type': 'Person',
+      name: 'Siam Mehraf',
+      url: 'https://siammehraf.com',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Siam Mehraf',
+    },
+  };
+
   return (
-    <div>
-      <HeroSection />
-      <BooksShowcase />
-      <AboutSection />
-      <WorkShowcase />
-      <SkillsSection />
-      <TestimonialsSection />
-      <ContactSection />
-      <NewsletterSignup />
-      <SkillsChart />
-      <LatestBlogSection />
-    </div>
+    <>
+      <Head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      </Head>
+
+      <div>
+        <HeroSection />
+        <BooksShowcase />
+        <AboutSection />
+        <WorkShowcase />
+        <SkillsSection />
+        <TestimonialsSection />
+        <ContactSection />
+        <NewsletterSignup />
+        <SkillsChart />
+        <LatestBlogSection />
+      </div>
+    </>
   );
 };
 

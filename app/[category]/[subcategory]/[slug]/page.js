@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import MarkdownClientWrapper from '@/components/MarkdownClientWrapper';
 import Tags from '@/components/Tags';
 import SocialShare from '@/components/SocialShare';
+import Head from 'next/head';
 
 export async function generateMetadata({ params }) {
   const { category, subcategory, slug } = params;
@@ -44,36 +45,90 @@ export default async function BlogPostPage({ params }) {
     return notFound();
   }
 
+  // JSON-LD Schema for this post
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://siammehraf.com/${category}/${subcategory}/${slug}`,
+    },
+    headline: post.title,
+    description: post.description || post.excerpt || post.title,
+    image: post.image || undefined,
+    author: {
+      '@type': 'Person',
+      name: post.author || 'Siam Mehraf',
+      url: 'https://siammehraf.com',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Siam Mehraf',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://siammehraf.com/hero-img.jpg',
+      },
+    },
+    datePublished: post.date,
+    keywords: [
+      'সিয়াম মেহরাফ',
+      'সিয়াম মেহরাফ ওয়েবসাইট',
+      'সিয়াম মেহরাফ ব্লগ',
+      'সিয়াম মেহরাফ গল্পসমূহ',
+      'সিয়াম মেহরাফ থ্রিলার',
+      'সিয়াম মেহরাফ বই',
+      'Siam Mehraf',
+      'Siam Mehraf Website',
+      'Siam Mehraf Blog',
+      'Siam Mehraf Writings',
+      'Siam Mehraf Thriller',
+      'Siam Mehraf Books',
+    ],
+  };
+
   return (
-    <main lang={post.lang} className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-2 text-center">{post.title}</h1>
+    <>
+      <Head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      </Head>
 
-      <p className="text-sm text-gray-500 mb-6 uppercase text-center flex justify-center items-center gap-2">
-        <span style={{ fontFamily: 'var(--font-poppins)' }}>
-          🗂 {category} / {subcategory}
-        </span>
-        <span className="mx-2">•</span>
-        <time style={{ fontFamily: 'var(--font-poppins)' }}>
-          {new Date(post.date).toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric',
-          })}
-        </time>
-      </p>
+      <main lang={post.lang} className="max-w-5xl mx-auto px-4 py-12">
+        <h1 className="text-4xl font-bold mb-2 text-center">{post.title}</h1>
 
-      {post.image && (
-        <div className="w-full max-w-[700px] max-h-[400px] mx-auto mb-8 rounded-[20px] overflow-hidden">
-          <Image src={post.image} alt={post.title} width={1280} height={720} className="object-cover" priority={true} />
-        </div>
-      )}
+        <p className="text-sm text-gray-500 mb-6 uppercase text-center flex justify-center items-center gap-2">
+          <span style={{ fontFamily: 'var(--font-poppins)' }}>
+            🗂 {category} / {subcategory}
+          </span>
+          <span className="mx-2">•</span>
+          <time style={{ fontFamily: 'var(--font-poppins)' }}>
+            {new Date(post.date).toLocaleDateString('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+            })}
+          </time>
+        </p>
 
-      <MarkdownClientWrapper content={post.content} lang={post.lang} />
+        {post.image && (
+          <div className="w-full max-w-[700px] max-h-[400px] mx-auto mb-8 rounded-[20px] overflow-hidden">
+            <Image
+              src={post.image}
+              alt={post.title}
+              width={1280}
+              height={720}
+              className="object-cover"
+              priority={true}
+            />
+          </div>
+        )}
 
-      <Tags tags={post.tags} />
+        <MarkdownClientWrapper content={post.content} lang={post.lang} />
 
-      <SocialShare title={post.title} url={`https://siammehraf.com/${category}/${subcategory}/${slug}`} />
-    </main>
+        <Tags tags={post.tags} />
+
+        <SocialShare title={post.title} url={`https://siammehraf.com/${category}/${subcategory}/${slug}`} />
+      </main>
+    </>
   );
 }
 

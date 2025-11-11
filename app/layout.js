@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import BackToTopButton from '@/components/ui/BackToTopButton';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import Script from 'next/script';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -37,7 +38,7 @@ export const metadata = {
     siteName: 'Siam Mehraf',
     images: [
       {
-        url: '/hero-img.jpg', // fallback OG image
+        url: '/hero-img.jpg',
         width: 1200,
         height: 630,
         alt: 'Siam Mehraf Website',
@@ -53,8 +54,49 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // ✅ Global JSON-LD Schema (Bengali + English Keywords)
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Siam Mehraf',
+    alternateName: [
+      'সিয়াম মেহরাফ',
+      'সিয়াম মেহরাফ ওয়েবসাইট',
+      'সিয়াম মেহরাফ ব্লগ',
+      'সিয়াম মেহরাফ গল্পসমূহ',
+      'সিয়াম মেহরাফ থ্রিলার',
+      'সিয়াম মেহরাফ বই',
+      'Siam Mehraf',
+      'Siam Mehraf Website',
+      'Siam Mehraf Blog',
+      'Siam Mehraf Writings',
+      'Siam Mehraf Thriller',
+      'Siam Mehraf Books',
+    ],
+    url: 'https://siammehraf.com',
+    image: 'https://siammehraf.com/hero-img.jpg',
+    jobTitle: 'Author, Filmmaker, Screenwriter, Novelist',
+    description:
+      'Siam Mehraf is a Bangladeshi author, screenwriter, filmmaker and novelist known for thriller stories and creative works.',
+    sameAs: [
+      'https://www.facebook.com/siammehraf',
+      'https://www.instagram.com/siammehraf',
+      'https://www.youtube.com/siammehraf',
+      'https://www.goodreads.com/siammehraf',
+    ],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* ✅ Inject Global Schema */}
+        <Script
+          id="json-ld-global"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+
       <body className={`${poppins.variable} ${notoSerifBengali.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar />

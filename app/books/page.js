@@ -24,32 +24,33 @@ export const metadata = {
 export default function BooksPage() {
   const books = getAllBooks();
 
-  // Generate structured data for JSON-LD
+  // JSON-LD structured data for all books
   const structuredData = {
     '@context': 'https://schema.org',
-    '@type': 'Book',
+    '@type': 'ItemList',
     name: 'Books by Siam Mehraf',
     url: 'https://siammehraf.com/books',
-    author: {
-      '@type': 'Person',
-      name: 'Siam Mehraf',
-    },
-    bookEdition: books.map((book) => ({
-      '@type': 'Book',
-      name: book.title,
-      author: book.bookAuthor || book.author,
-      url: `https://siammehraf.com/books/${book.slug}`,
-      image: book.cover ? `https://siammehraf.com${book.cover}` : undefined,
-      description: book.description,
-      datePublished: book.publishYear || undefined,
-      aggregateRating: book.ratingRokomari
-        ? {
-            '@type': 'AggregateRating',
-            ratingValue: book.ratingRokomari,
-            bestRating: '5',
-            ratingCount: 1,
-          }
-        : undefined,
+    numberOfItems: books.length,
+    itemListElement: books.map((book, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Book',
+        name: book.title,
+        author: book.bookAuthor || book.author,
+        url: `https://siammehraf.com/books/${book.slug}`,
+        image: book.cover ? `https://siammehraf.com${book.cover}` : undefined,
+        description: book.description || '',
+        datePublished: book.publishYear || undefined,
+        aggregateRating: book.ratingRokomari
+          ? {
+              '@type': 'AggregateRating',
+              ratingValue: book.ratingRokomari,
+              bestRating: '5',
+              ratingCount: 1,
+            }
+          : undefined,
+      },
     })),
   };
 
@@ -73,7 +74,7 @@ export default function BooksPage() {
         <meta name="twitter:description" content={metadata.description} />
         {books[0]?.cover && <meta name="twitter:image" content={`https://siammehraf.com${books[0].cover}`} />}
 
-        {/* JSON-LD Structured Data */}
+        {/* JSON-LD for Google */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData, null, 2) }}
