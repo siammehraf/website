@@ -31,6 +31,8 @@ export async function generateMetadata({ params }) {
       type: 'website',
       siteName: 'Siam Mehraf Blog',
       images: [{ url: '/og/default.png', width: 1200, height: 630, alt: title }],
+      fbAppId: '1356492322781777',
+      siteName: 'Siam Mehraf',
     },
     twitter: {
       card: 'summary_large_image',

@@ -11,6 +11,8 @@ export const metadata = {
     description: 'Read all blog posts by Siam Mehraf',
     url: 'https://siammehraf.com/blog',
     type: 'website',
+    fbAppId: '1356492322781777',
+    siteName: 'Siam Mehraf',
   },
   twitter: {
     card: 'summary_large_image',

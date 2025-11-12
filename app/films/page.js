@@ -19,6 +19,7 @@ export const metadata = {
     description: 'Browse all films created by filmmaker Siam Mehraf.',
     url: 'https://siammehraf.com/films',
     siteName: 'Siam Mehraf',
+    fbAppId: '1356492322781777',
     images: [
       {
         url: 'https://siammehraf.com/og/films-page.png',

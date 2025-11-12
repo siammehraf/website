@@ -25,6 +25,7 @@ export const metadata = {
     url: 'https://siammehraf.com',
     type: 'website',
     siteName: 'Siam Mehraf',
+    fbAppId: '1356492322781777',
     images: [
       {
         url: '/hero-img.jpg',

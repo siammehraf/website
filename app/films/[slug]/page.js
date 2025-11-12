@@ -34,6 +34,7 @@ export async function generateMetadata({ params }) {
         },
       ],
       type: 'video.other',
+      fbAppId: '1356492322781777',
     },
     twitter: {
       card: 'summary_large_image',
