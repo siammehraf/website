@@ -20,6 +20,7 @@ export async function generateMetadata({ params }) {
         description: post.description || post.excerpt || post.title,
         images: post.image ? [post.image] : [],
         type: 'article',
+        siteName: 'Siam Mehraf',
       },
       twitter: {
         card: 'summary_large_image',
