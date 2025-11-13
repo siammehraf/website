@@ -90,6 +90,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* ✅ Favicon links */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+
         {/* ✅ Inject Global Schema */}
         <Script
           id="json-ld-global"
