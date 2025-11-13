@@ -86,6 +86,7 @@ const HomePage = () => {
   return (
     <>
       <Head>
+        <meta name="google-site-verification" content="5Ranh3fbqr3VUJnBys5iWmReNm9sFLinyG2OpgC85vE" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </Head>
 
