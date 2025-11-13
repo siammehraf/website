@@ -111,6 +111,7 @@ export default function BookPage({ params }) {
         <meta name="twitter:title" content={`${book.title} | Siam Mehraf`} />
         <meta name="twitter:description" content={book.description || ''} />
         {book.cover && <meta name="twitter:image" content={`https://siammehraf.com${book.cover}`} />}
+        <meta property="fb:app_id" content="1356492322781777" />
 
         {/* JSON-LD */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd, null, 2) }} />

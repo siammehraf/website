@@ -18,40 +18,38 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from 'lucide-react';
+import { Book } from 'lucide-react';
 
 const components = [
   {
-    title: 'Tech',
+    title: 'Blogs',
     href: '/blog',
-    description: 'A modal dialog that interrupts the user with important content and expects a response.',
+    description: 'Discover ideas and stories by Siam Mehraf.',
   },
   {
     title: 'Thriller',
-    href: '/blog',
-    description: 'For sighted users to preview content available behind a link.',
+    href: '/thrillers',
+    description: 'Dive into exciting tales by Siam Mehraf.',
   },
   {
-    title: 'Progress',
-    href: '/blog',
-    description:
-      'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
+    title: 'Writings',
+    href: '/writings',
+    description: 'Explore creative writings by Siam Mehraf.',
   },
   {
-    title: 'Scroll-area',
-    href: '/blog',
-    description: 'Visually or semantically separates content.',
+    title: 'Discussions',
+    href: '/discussions',
+    description: 'Read thoughts and analyses on various topics by Siam Mehraf.',
   },
   {
-    title: 'Tabs',
-    href: '/blog',
-    description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
+    title: 'Reviews',
+    href: '/review',
+    description: 'Read honest reviews by Siam Mehraf.',
   },
   {
-    title: 'Tooltip',
-    href: '/blog',
-    description:
-      'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
+    title: 'Books',
+    href: '/books',
+    description: 'Check out books penned by Siam Mehraf.',
   },
 ];
 
@@ -126,31 +124,31 @@ export default function Navbar() {
 
               <NavigationMenuItem>
                 <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                  <Link href="/docs">Docs</Link>
+                  <Link href="/blog">Blogs</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger>List</NavigationMenuTrigger>
+                <NavigationMenuTrigger>Works</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[300px] gap-4">
                     <li>
                       <NavigationMenuLink asChild>
-                        <Link href="#">
-                          <div className="font-medium">Components</div>
-                          <div className="text-muted-foreground">Browse all components in the library.</div>
+                        <Link href="/books">
+                          <div className="font-medium">Books</div>
+                          <div className="text-muted-foreground">Browse all books penned by Siam Mehraf.</div>
                         </Link>
                       </NavigationMenuLink>
                       <NavigationMenuLink asChild>
-                        <Link href="#">
-                          <div className="font-medium">Documentation</div>
-                          <div className="text-muted-foreground">Learn how to use the library.</div>
+                        <Link href="/films">
+                          <div className="font-medium">Films</div>
+                          <div className="text-muted-foreground">All creative films by Siam Mehraf</div>
                         </Link>
                       </NavigationMenuLink>
                       <NavigationMenuLink asChild>
-                        <Link href="#">
-                          <div className="font-medium">Blog</div>
-                          <div className="text-muted-foreground">Read our latest blog posts.</div>
+                        <Link href="/writings">
+                          <div className="font-medium">Writings</div>
+                          <div className="text-muted-foreground">Read latest writings of Siam Mehraf</div>
                         </Link>
                       </NavigationMenuLink>
                     </li>
@@ -159,18 +157,18 @@ export default function Navbar() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Simple</NavigationMenuTrigger>
+                <NavigationMenuTrigger>About</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[200px] gap-4">
                     <li>
                       <NavigationMenuLink asChild>
-                        <Link href="#">Components</Link>
+                        <Link href="/about">Know About Me</Link>
                       </NavigationMenuLink>
                       <NavigationMenuLink asChild>
-                        <Link href="#">Documentation</Link>
+                        <Link href="/books">Published Books</Link>
                       </NavigationMenuLink>
                       <NavigationMenuLink asChild>
-                        <Link href="#">Blocks</Link>
+                        <Link href="/films">Creative Works</Link>
                       </NavigationMenuLink>
                     </li>
                   </ul>
@@ -178,26 +176,26 @@ export default function Navbar() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
+                <NavigationMenuTrigger>Books</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[200px] gap-4">
                     <li>
                       <NavigationMenuLink asChild>
-                        <Link href="#" className="flex flex-row items-center gap-2">
-                          <CircleHelpIcon />
-                          Backlog
+                        <Link href="/books/onno-boshonter-shopno" className="flex flex-row items-center gap-2">
+                          <Book />
+                          Onno Boshonter Shopno
                         </Link>
                       </NavigationMenuLink>
                       <NavigationMenuLink asChild>
-                        <Link href="#" className="flex flex-row items-center gap-2">
-                          <CircleIcon />
-                          To Do
+                        <Link href="/books/nefartiti" className="flex flex-row items-center gap-2">
+                          <Book />
+                          Nefartiti
                         </Link>
                       </NavigationMenuLink>
                       <NavigationMenuLink asChild>
-                        <Link href="#" className="flex flex-row items-center gap-2">
-                          <CircleCheckIcon />
-                          Done
+                        <Link href="/books/chotushkon" className="flex flex-row items-center gap-2">
+                          <Book />
+                          Chotushkon
                         </Link>
                       </NavigationMenuLink>
                     </li>

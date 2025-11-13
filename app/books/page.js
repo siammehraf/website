@@ -67,6 +67,7 @@ export default function BooksPage() {
         <meta property="og:description" content={metadata.description} />
         <meta property="og:url" content="https://siammehraf.com/books" />
         {books[0]?.cover && <meta property="og:image" content={`https://siammehraf.com${books[0].cover}`} />}
+        <meta property="fb:app_id" content="1356492322781777" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -82,7 +83,7 @@ export default function BooksPage() {
       </Head>
 
       <main className={`${notoSerifBengali.className} max-w-5xl mx-auto px-4 py-10`}>
-        <h1 className="text-4xl font-bold text-center mb-10">📚 My Books</h1>
+        <h1 className="text-4xl font-bold text-center mb-10">📚 Published Books</h1>
 
         <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
           {books.map((book) => (
@@ -107,13 +108,21 @@ export default function BooksPage() {
                 </div>
               )}
 
-              {/* Info */}
+              {/* Info: Noto Serif Bengali */}
               <h2 className="text-xl font-semibold">{book.title}</h2>
-              {book.subtitle && <p className="text-sm text-gray-600 mb-2">{book.subtitle}</p>}
-              <p className="text-sm text-gray-600 mb-2">লেখক - {book.bookAuthor || book.author}</p>
-              <p className="text-gray-700 mb-4 line-clamp-3">{book.description}</p>
+              {book.subtitle && (
+                <p className="text-sm mb-2" style={{ color: 'inherit' }}>
+                  {book.subtitle}
+                </p>
+              )}
+              <p className="text-sm mb-2" style={{ color: 'inherit' }}>
+                লেখক - {book.bookAuthor || book.author}
+              </p>
+              <p className="mb-4 line-clamp-3" style={{ color: 'inherit' }}>
+                {book.description}
+              </p>
 
-              {/* Ratings */}
+              {/* Ratings: Poppins */}
               <div className={`flex flex-wrap justify-center gap-2 mb-4 ${poppins.className}`}>
                 {book.ratingRokomari && (
                   <span className="px-2 py-1 border rounded-sm text-sm">{`Rokomari: ${book.ratingRokomari}`}</span>

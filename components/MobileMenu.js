@@ -34,7 +34,10 @@ export default function MobileMenu() {
             <Link href="/">Home</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/writings">Writings</Link>
+            <Link href="/blogs">Writings</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/books">Books</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <Link href="/about">About</Link>
