@@ -83,7 +83,7 @@ export default function BooksPage() {
       </Head>
 
       <main className={`${notoSerifBengali.className} max-w-5xl mx-auto px-4 py-10`}>
-        <h1 className="text-4xl font-bold text-center mb-10">📚 Published Books</h1>
+        <h1 className={`text-4xl font-bold text-center mb-10 ${poppins.className}`}>📚 Published Books</h1>
 
         <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
           {books.map((book) => (
