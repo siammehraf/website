@@ -3,7 +3,7 @@ title: 'নেফারতিতি'
 subtitle: 'সিয়াম মেহরাফ এর দ্বিতীয় থ্রিলার উপন্যাস'
 author: 'Siam Mehraf'
 bookAuthor: 'সিয়াম মেহরাফ'
-publishYear: '২০২৩'
+publishYear: '২০২১'
 cover: '/images/books/nefartiti.jpg'
 image: '/images/books/nefartiti.jpg'
 
@@ -15,14 +15,14 @@ genre:
   - থ্রিলার
 
 buyLinks:
-  rokomari: 'https://www.rokomari.com/book/195158/chotuskon'
-  goodreads: 'https://www.goodreads.com/book/show/43920279'
+  rokomari: 'https://www.rokomari.com/book/207800/nefertiti'
+  goodreads: 'https://www.goodreads.com/book/show/53397399'
   amazon: ''
 
 tags:
-  - জলতরঙ্গ
-  - হাসান ইনাম
-  - বইমেলা ২০২৩
+  - নেফারতিতি
+  - সিয়াম মেহরাফ
+  - থ্রিলার উপন্যাস
 
 lang: 'bn'
 category: 'books'

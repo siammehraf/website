@@ -3,7 +3,7 @@ title: 'অন্য বসন্তের স্বপ্ন'
 subtitle: 'সিয়াম মেহরাফ এর গল্পগ্রন্থ'
 author: 'Siam Mehraf'
 bookAuthor: 'সিয়াম মেহরাফ'
-publishYear: '২০২'
+publishYear: '২০২৩'
 cover: '/images/books/onno-boshonter-shopno.jpg'
 image: '/images/books/onno-boshonter-shopno.jpg'
 
@@ -20,9 +20,9 @@ buyLinks:
   amazon: ''
 
 tags:
-  - জলতরঙ্গ
-  - হাসান ইনাম
-  - বইমেলা ২০২৩
+  - অন্য বসন্তের স্বপ্ন
+  - সিয়াম মেহরাফ
+  - গল্পগ্রন্থ
 
 lang: 'bn'
 category: 'books'

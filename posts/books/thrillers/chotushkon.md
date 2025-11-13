@@ -12,7 +12,7 @@ ratingGoodreads: '4.57'
 
 genre:
   - উপন্যাস
-  - সাহিত্য আলোচনা
+  - থ্রিলার
 
 buyLinks:
   rokomari: 'https://www.rokomari.com/book/195158/chotuskon'
@@ -20,9 +20,9 @@ buyLinks:
   amazon: ''
 
 tags:
-  - জলতরঙ্গ
-  - হাসান ইনাম
-  - বইমেলা ২০২৩
+  - চতুষ্কোণ
+  - সিয়াম মেহরাফ
+  - থ্রিলার উপন্যাস
 
 lang: 'bn'
 category: 'books'

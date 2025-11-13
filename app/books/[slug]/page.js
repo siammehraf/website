@@ -18,7 +18,7 @@ const poppins = Poppins({
   display: 'swap',
 });
 
-// Find the markdown file by slug
+// Find markdown file by slug
 function findBookFile(dir, slug) {
   const entries = fs.readdirSync(dir);
   for (const entry of entries) {
@@ -45,7 +45,7 @@ function getBookBySlug(slug) {
   return { ...data, content, slug };
 }
 
-// Generate Metadata dynamically
+// Generate metadata dynamically
 export async function generateMetadata({ params }) {
   const book = getBookBySlug(params.slug);
   if (!book) return { title: 'Book Not Found | Siam Mehraf' };
@@ -117,10 +117,12 @@ export default function BookPage({ params }) {
       </Head>
 
       <main className={`${notoSerifBengali.className} max-w-4xl mx-auto px-4 py-10`}>
+        {/* Title and author */}
         <h1 className="text-4xl font-bold text-center mb-4">{book.title}</h1>
-        {book.subtitle && <p className="text-center text-gray-600 mb-4">{book.subtitle}</p>}
-        <p className="text-center text-gray-600 mb-4">লেখক - {book.bookAuthor || book.author}</p>
+        {book.subtitle && <p className="text-center mb-4">{book.subtitle}</p>}
+        <p className="text-center mb-4">লেখক - {book.bookAuthor || book.author}</p>
 
+        {/* Cover */}
         {book.cover && (
           <div className="mb-6 flex justify-center">
             <Image
@@ -134,6 +136,7 @@ export default function BookPage({ params }) {
           </div>
         )}
 
+        {/* Ratings */}
         <div className={`flex justify-center flex-wrap gap-2 mb-6 ${poppins.className}`}>
           {book.ratingRokomari && (
             <span className="px-2 py-1 border rounded-sm text-sm">Rokomari: {book.ratingRokomari}</span>
@@ -143,37 +146,43 @@ export default function BookPage({ params }) {
           )}
         </div>
 
-        <div className="flex flex-col gap-3 items-center mb-6">
-          {book.buyLinks?.rokomari && (
-            <a
-              href={book.buyLinks.rokomari}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 border w-48 text-center rounded-md hover:bg-gray-100 dark:hover:bg-gray-200 dark:hover:text-black">
-              রকমারিতে কিনুন
-            </a>
-          )}
-          {book.buyLinks?.goodreads && (
-            <a
-              href={book.buyLinks.goodreads}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 border w-48 text-center rounded-md hover:bg-gray-100 dark:hover:bg-gray-200 dark:hover:text-black">
-              গুডরিডসে দেখুন
-            </a>
-          )}
-          {book.buyLinks?.amazon && (
-            <a
-              href={book.buyLinks.amazon}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 border w-48 text-center rounded-md hover:bg-gray-100 dark:hover:bg-gray-200 dark:hover:text-black">
-              Amazon
-            </a>
+        {/* Buy Buttons */}
+        <div className="flex flex-col items-center gap-2 mb-6">
+          {(book.buyLinks?.rokomari || book.buyLinks?.goodreads || book.buyLinks?.amazon) && (
+            <div className="flex flex-wrap justify-center gap-2">
+              {book.buyLinks?.rokomari && (
+                <a
+                  href={book.buyLinks.rokomari}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 border w-48 text-center rounded-md hover:bg-gray-100 dark:hover:bg-gray-200 dark:hover:text-black">
+                  রকমারিতে কিনুন
+                </a>
+              )}
+              {book.buyLinks?.goodreads && (
+                <a
+                  href={book.buyLinks.goodreads}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 border w-48 text-center rounded-md hover:bg-gray-100 dark:hover:bg-gray-200 dark:hover:text-black">
+                  গুডরিডসে দেখুন
+                </a>
+              )}
+              {book.buyLinks?.amazon && (
+                <a
+                  href={book.buyLinks.amazon}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 border w-48 text-center rounded-md hover:bg-gray-100 dark:hover:bg-gray-200 dark:hover:text-black">
+                  Amazon
+                </a>
+              )}
+            </div>
           )}
         </div>
 
-        <div className="mt-6 text-gray-800 text-justify whitespace-pre-wrap">{book.content}</div>
+        {/* Book content */}
+        <div className="mt-6 text-justify whitespace-pre-wrap">{book.content}</div>
       </main>
     </>
   );

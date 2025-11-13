@@ -124,31 +124,34 @@ export default function BooksPage() {
               </div>
 
               {/* Buttons */}
-              <div className="flex flex-col gap-2 mt-4 items-center">
+              <div className="flex flex-col gap-3 mt-4 items-center">
                 <Link
                   href={`/books/${book.slug}`}
                   className="px-4 py-2 w-48 text-center border rounded-md hover:bg-gray-100 dark:hover:bg-gray-200 dark:hover:text-black">
                   বইটি সম্পর্কে জানুন
                 </Link>
 
-                {book.buyLinks?.rokomari && (
-                  <a
-                    href={book.buyLinks.rokomari}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 w-48 text-center border rounded-md hover:bg-gray-100 dark:hover:bg-gray-200 dark:hover:text-black">
-                    রকমারিতে কিনুন
-                  </a>
-                )}
-
-                {book.buyLinks?.goodreads && (
-                  <a
-                    href={book.buyLinks.goodreads}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 w-48 text-center border rounded-md hover:bg-gray-100 dark:hover:bg-gray-200 dark:hover:text-black">
-                    গুডরিডসে দেখুন
-                  </a>
+                {(book.buyLinks?.rokomari || book.buyLinks?.goodreads) && (
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {book.buyLinks?.rokomari && (
+                      <a
+                        href={book.buyLinks.rokomari}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 w-48 text-center border rounded-md hover:bg-gray-100 dark:hover:bg-gray-200 dark:hover:text-black">
+                        রকমারিতে কিনুন
+                      </a>
+                    )}
+                    {book.buyLinks?.goodreads && (
+                      <a
+                        href={book.buyLinks.goodreads}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 w-48 text-center border rounded-md hover:bg-gray-100 dark:hover:bg-gray-200 dark:hover:text-black">
+                        গুডরিডসে দেখুন
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
             </article>
