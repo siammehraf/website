@@ -28,7 +28,7 @@ lang: 'bn'
 category: 'books'
 subcategory: 'novels'
 slug: ''
-date: 2020-01-01
+date: 2020-02-01
 
 description: 'একটা ভয়াবহ দূর্ঘটনায় প্রাণ হারালো মাত্র ৫ বছর বয়সী এক নিষ্পাপ শিশু...'
 ---
