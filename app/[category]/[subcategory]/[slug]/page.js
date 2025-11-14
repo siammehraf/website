@@ -5,6 +5,7 @@ import MarkdownClientWrapper from '@/components/MarkdownClientWrapper';
 import Tags from '@/components/Tags';
 import SocialShare from '@/components/SocialShare';
 import Head from 'next/head';
+import FontSizeControls from '@/components/ui/FontSizeControl';
 
 export async function generateMetadata({ params }) {
   const { category, subcategory, slug } = params;
@@ -123,8 +124,10 @@ export default async function BlogPostPage({ params }) {
             />
           </div>
         )}
-
-        <MarkdownClientWrapper content={post.content} lang={post.lang} />
+        <FontSizeControls />
+        <div id="post-content">
+          <MarkdownClientWrapper content={post.content} lang={post.lang} />
+        </div>
 
         <Tags tags={post.tags} />
 
