@@ -6,6 +6,7 @@ import Tags from '@/components/Tags';
 import SocialShare from '@/components/SocialShare';
 import Head from 'next/head';
 import FontSizeControls from '@/components/ui/FontSizeControl';
+import AnimatedMarkdownWrapper from '@/components/AnimatedMarkdownWrapper';
 
 export async function generateMetadata({ params }) {
   const { category, subcategory, slug } = params;
@@ -113,7 +114,7 @@ export default async function BlogPostPage({ params }) {
         </p>
 
         {post.image && (
-          <div className="w-full max-w-[700px] max-h-[400px] mx-auto mb-8 rounded-[20px] overflow-hidden">
+          <div className="w-full max-w-[700px] max-h-[400px] mx-auto mb-8 rounded-[20px] overflow-hidden relative">
             <Image
               src={post.image}
               alt={post.title}
@@ -121,12 +122,14 @@ export default async function BlogPostPage({ params }) {
               height={720}
               className="object-cover"
               priority={true}
+              placeholder="blur"
+              blurDataURL="/placeholder.png" // tiny blurred image
             />
           </div>
         )}
         <FontSizeControls />
         <div id="post-content">
-          <MarkdownClientWrapper content={post.content} lang={post.lang} />
+          <AnimatedMarkdownWrapper content={post.content} lang={post.lang} />
         </div>
 
         <Tags tags={post.tags} />
