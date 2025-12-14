@@ -14,10 +14,17 @@ const LINKS = {
 };
 
 export function middleware(request) {
-  const slug = request.nextUrl.pathname.replace('/', '');
+  const pathname = request.nextUrl.pathname;
+
+  // ✅ ALLOW ads.txt (VERY IMPORTANT)
+  if (pathname === '/ads.txt') {
+    return NextResponse.next();
+  }
+
+  const slug = pathname.replace('/', '');
 
   // If no match, do nothing
-  if (!LINKS[slug]) return;
+  if (!LINKS[slug]) return NextResponse.next();
 
   // Fast + SEO-friendly redirect
   return NextResponse.redirect(LINKS[slug], 308);
