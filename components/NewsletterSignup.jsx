@@ -1,57 +1,55 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Mail } from 'lucide-react';
+import { Mail, Loader2 } from 'lucide-react';
+import { subscribeToNewsletter } from '@/app/actions';
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-  }
+    setLoading(true);
+    setError('');
+
+    const result = await subscribeToNewsletter(email);
+
+    if (result.success) {
+      setSubmitted(true);
+    } else {
+      setError(result.error || 'Something went wrong.');
+    }
+    setLoading(false);
+  };
 
   return (
-    <div className="px-6 sm:px-8 lg:px-12 mb-6">
-      <Card className="max-w-sm mx-auto hover:shadow-lg transition-shadow rounded-lg">
+    <div className="px-6 mb-6">
+      <Card className="max-w-sm mx-auto">
         <CardContent className="p-6 text-center">
-          <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">Subscribe to My Newsletter</h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
-            Get updates on my latest writings, projects, and videos.
-          </p>
-
+          <h2 className="text-xl font-bold mb-4">Subscribe to My Newsletter</h2>
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-3 justify-center">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
               <input
                 type="email"
-                placeholder="Your email address"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="
-    w-full md:flex-grow
-    border border-gray-300 dark:border-gray-700
-    px-4 py-2 h-12 text-base
-    text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400
-    focus:outline-none focus:ring-2 focus:ring-blue-600
-    rounded-md
-  "
+                placeholder="Email address"
+                className="border p-2 rounded dark:bg-gray-800"
               />
-              <Button
-                type="submit"
-                className="
-                  flex items-center gap-2 px-6 h-12 text-sm w-full md:w-auto justify-center
-                  rounded-md
-                ">
-                <Mail className="w-5 h-5" />
-                Subscribe
+              <Button type="submit" disabled={loading}>
+                {loading ? <Loader2 className="animate-spin" /> : <Mail className="mr-2" />}
+                {loading ? 'Subscribing...' : 'Subscribe'}
               </Button>
+              {error && <p className="text-red-500 text-sm">{error}</p>}
             </form>
           ) : (
-            <p className="text-green-600 dark:text-green-400 font-semibold">Thank you for subscribing!</p>
+            <p className="text-green-600">🎉 Thanks for subscribing!</p>
           )}
         </CardContent>
       </Card>
