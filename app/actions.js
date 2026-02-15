@@ -46,10 +46,10 @@ export async function subscribeToNewsletter(email) {
                 <strong>Connect with me:</strong><br/>
                 <a href="https://facebook.com/siammehraf" style="margin: 0 10px; color: #1877F2; text-decoration: none; font-weight: bold;">Facebook</a> | 
                 <a href="https://instagram.com/siammehraf" style="margin: 0 10px; color: #E4405F; text-decoration: none; font-weight: bold;">Instagram</a> | 
-                <a href="https://x.com/siammehraf" style="margin: 0 10px; color: #333; text-decoration: none; font-weight: bold;">GitHub</a>
+                <a href="https://x.com/siammehraf" style="margin: 0 10px; color: #333; text-decoration: none; font-weight: bold;">X</a>
             </p>
 
-            <p>I can't wait to share my next writing with you. If you ever want to chat or share your thoughts, just contact me by replying to this email!</p>
+            <p>I can't wait to share my next writing with you. If you ever want to chat or share your thoughts, just contact me on Social Media!</p>
             
             <p style="margin-top: 30px;">Warmly,<br>
             <strong>Siam Mehraf</strong><br>
