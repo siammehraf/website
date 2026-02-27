@@ -45,6 +45,9 @@ export default function MobileMenu() {
           <DropdownMenuItem asChild>
             <Link href="/contact">Contact</Link>
           </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link href="/newsletter">Newsletter</Link>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

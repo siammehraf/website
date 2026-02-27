@@ -102,8 +102,8 @@ export default function Navbar() {
                     <ListItem href="/about" title="My Passion">
                       I am passionate about literature, writing, cinema, acting & coding!
                     </ListItem>
-                    <ListItem href="/about" title="Personal Goals">
-                      Contribute to the world with my knowledge and skills.
+                    <ListItem href="/newsletter" title="Newsletter">
+                      Join 100+ best readers and learn together.
                     </ListItem>
                   </ul>
                 </NavigationMenuContent>
