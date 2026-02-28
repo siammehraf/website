@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Mail, Loader2 } from 'lucide-react';
+import { Mail, Loader2, AlertCircle } from 'lucide-react'; // Added AlertCircle for a subtle professional touch
 import { subscribeToNewsletter } from '@/app/actions';
 
 export default function NewsletterSignup() {
@@ -14,6 +14,13 @@ export default function NewsletterSignup() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    // Manual validation to replace the browser tooltip
+    if (!email.trim()) {
+      setError('Please fill out this field.');
+      return;
+    }
+
     setLoading(true);
     setError('');
 
@@ -37,16 +44,33 @@ export default function NewsletterSignup() {
           </p>
 
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-3 justify-center">
-              <input
-                type="email"
-                placeholder="Your email address"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={loading}
-                className="w-full border border-gray-300 dark:border-gray-700 px-4 py-2 h-12 text-base text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-md disabled:opacity-50"
-              />
+            /* added noValidate to disable the browser's default grey bubble */
+            <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-3 justify-center">
+              <div className="flex flex-col gap-1.5">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (error) setError(''); // Clears error immediately when user starts typing
+                  }}
+                  disabled={loading}
+                  /* Added a subtle red border only when error exists */
+                  className={`w-full border px-4 py-2 h-12 text-base text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded-md disabled:opacity-50 transition-colors ${
+                    error ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'
+                  }`}
+                />
+
+                {/* Minimalist Error Display: Slides in smoothly without a shake */}
+                {error && (
+                  <div className="flex items-center gap-1.5 text-red-500 px-1 animate-in fade-in slide-in-from-top-1 duration-200">
+                    <AlertCircle className="w-3.5 h-3.5" />
+                    <p className="text-sm font-medium leading-none">{error}</p>
+                  </div>
+                )}
+              </div>
+
               <Button
                 type="submit"
                 disabled={loading}
@@ -54,7 +78,6 @@ export default function NewsletterSignup() {
                 {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Mail className="w-5 h-5" />}
                 {loading ? 'Subscribing...' : 'Subscribe'}
               </Button>
-              {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
             </form>
           ) : (
             <div className="space-y-2">

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Mail, Loader2, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Mail, Loader2, CheckCircle2, ArrowRight, AlertCircle } from 'lucide-react'; // Added AlertCircle
 import { subscribeToNewsletter } from '@/app/actions';
 
 export default function NewsletterPage() {
@@ -13,6 +13,13 @@ export default function NewsletterPage() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    // 1. Minimalist manual validation
+    if (!email.trim()) {
+      setError('Please fill out this field.');
+      return;
+    }
+
     setLoading(true);
     setError('');
 
@@ -28,7 +35,6 @@ export default function NewsletterPage() {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-950 px-6 py-12 transition-colors duration-300">
-      {/* The Central Content Area */}
       <div className="w-full max-w-2xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800 p-8 md:p-16">
         {!submitted ? (
           <>
@@ -45,24 +51,37 @@ export default function NewsletterPage() {
               </p>
             </header>
 
-            {/* Form Logic: Using exact state and handlers */}
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="relative">
+            {/* 2. Added noValidate to disable browser tooltip */}
+            <form onSubmit={handleSubmit} noValidate className="space-y-4">
+              <div className="flex flex-col gap-2">
                 <input
                   type="email"
                   placeholder="Your email address"
-                  required
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (error) setError('');
+                  }}
                   disabled={loading}
-                  className="w-full px-6 py-4 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all disabled:opacity-50 text-lg"
+                  /* 3. Subtle conditional border matching your theme */
+                  className={`w-full px-6 py-4 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all disabled:opacity-50 text-lg ${
+                    error ? 'border-red-500' : 'border-slate-200 dark:border-slate-700'
+                  }`}
                 />
+
+                {/* 4. Minimalist Error Message */}
+                {error && (
+                  <div className="flex items-center gap-2 text-red-500 dark:text-red-400 px-2 animate-in fade-in slide-in-from-top-1 duration-200">
+                    <AlertCircle className="w-4 h-4" />
+                    <p className="text-sm font-medium leading-none">{error}</p>
+                  </div>
+                )}
               </div>
 
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full h-16 bg-slate-900 dark:bg-blue-600 hover:bg-black dark:hover:bg-blue-500 text-white text-lg font-bold rounded-2xl transition-all flex items-center justify-center gap-3 group">
+                className="w-full h-16 bg-slate-900 dark:bg-blue-600 hover:bg-black dark:hover:bg-blue-500 text-white text-lg font-bold rounded-2xl transition-all flex items-center justify-center gap-3 group active:scale-[0.98]">
                 {loading ? (
                   <Loader2 className="w-6 h-6 animate-spin" />
                 ) : (
@@ -72,13 +91,8 @@ export default function NewsletterPage() {
                   </>
                 )}
               </Button>
-
-              {error && (
-                <p className="text-red-500 dark:text-red-400 text-sm text-center font-medium animate-pulse">{error}</p>
-              )}
             </form>
 
-            {/* Trust Signals: Minimalist icons for credibility */}
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 pt-8 border-t border-slate-100 dark:border-slate-800">
               <div className="flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
                 <div className="w-2 h-2 rounded-full bg-green-500" />
@@ -91,7 +105,6 @@ export default function NewsletterPage() {
             </div>
           </>
         ) : (
-          /* Success State: Keeping success logic */
           <div className="text-center space-y-6 animate-in fade-in zoom-in duration-500 py-10">
             <div className="mx-auto w-20 h-20 bg-green-50 dark:bg-green-900/20 rounded-full flex items-center justify-center">
               <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
@@ -111,7 +124,6 @@ export default function NewsletterPage() {
         )}
       </div>
 
-      {/* Optional Footer Link */}
       <footer className="mt-8">
         <a
           href="/"
