@@ -12,6 +12,7 @@ const LINKS = {
   twitter: 'https://twitter.com/siammehraf',
   x: 'https://x.com/siammehraf',
   library: 'https://siammehraf.notion.site/80ef552419e34f9ba2fde32dd8a05d4d?v=a662ba7ca0504887af4c724d62495451&pvs=74',
+  googlescholar: 'https://scholar.google.com/citations?user=diI5FxsAAAAJ',
 };
 
 export function middleware(request) {
